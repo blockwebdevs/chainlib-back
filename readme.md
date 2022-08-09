@@ -1,6 +1,6 @@
-## About SoledyNFT API
+## About chainlib API
 
-SoledyNFT API is a web backend application on Laravel framework with expressive, elegant syntax.
+chainlib API is a web backend application on Laravel framework with expressive, elegant syntax.
 
 ## Contributing
 
