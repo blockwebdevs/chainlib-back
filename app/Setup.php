@@ -210,7 +210,7 @@ class Setup
         setcookie('country_id', self::$country->id, time() + 10000000, '/');
         setcookie('lang_id', self::$lang->lang, time() + 10000000, '/');
         setcookie('currency_id', self::$currency->id, time() + 10000000, '/');
-        setcookie('warehouse_id', self::$warehouse->id, time() + 10000000, '/');
+//        setcookie('warehouse_id', self::$warehouse->id, time() + 10000000, '/');
     }
 
     private function checkSiteType($request)
