@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/en/api/offers', 'API\OfferController@getOffers');
 Route::post('/en/api/offer', 'API\OfferController@createOffer');
+Route::post('/en/api/book', 'API\OfferController@submitBook');
 
 
 Route::patch('/api/cart', 'API\CheckoutController@changeQtyCart')->middleware('cors');
@@ -45,7 +46,6 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('marketplace', 'API\ProductsController@getMarketplaceCategory');
     Route::get('product', 'API\ProductsController@getProduct');
 
-    Route::post('book', 'API\FeedBackController@submitBook');
 
     Route::get('products/new', 'API\ProductsController@getNewProducts');
     Route::get('products/outlet', 'API\ProductsController@getOutletProducts');
