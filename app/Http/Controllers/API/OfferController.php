@@ -37,16 +37,16 @@ class OfferController extends ApiController
             $feedback->subject = 'Add A book';
             $feedback->status = 'new';
 
-            $message = 'Title - '. $request->get('title');
-            $message .= 'Author - '. $request->get('author');
-            $message .= 'Second Author - '. $request->get('secondAuthor');
-            $message .= 'Subject - '. $request->get('subject');
-            $message .= 'Publication - '. $request->get('publication');
-            $message .= 'Illustrator - '. $request->get('illustrator');
-            $message .= 'Language - '. $request->get('language');
-            $message .= 'Country - '. $request->get('country');
-            $message .= 'ISBN - '. $request->get('isbn');
-            $message .= 'Description - '. $request->get('description');
+            $message = 'Title - <b>' . $request->get('title') . '</b><br>';
+            $message .= 'Author -  <b>' . $request->get('author') . '</b><br>';
+            $message .= 'Second Author -  <b>' . $request->get('secondAuthor') . '</b><br>';
+            $message .= 'Subject -  <b>' . $request->get('subject') . '</b><br>';
+            $message .= 'Publication -  <b>' . $request->get('publication') . '</b><br>';
+            $message .= 'Illustrator -  <b>' . $request->get('illustrator') . '</b><br>';
+            $message .= 'Language -  <b>' . $request->get('language') . '</b><br>';
+            $message .= 'Country -  <b>' . $request->get('country') . '</b><br>';
+            $message .= 'ISBN -  <b>' . $request->get('isbn') . '</b><br>';
+            $message .= 'Description -  <b>' . $request->get('description') . '</b><br>';
 
             $feedback->message = $message;
             $feedback->save();

@@ -48,11 +48,11 @@
                                     <input type="text" name="email" class="name" id="email"
                                            value="{{ $feedBack->email }}">
                                 </li>
-                                <li>
-                                    <label for="company">Company</label>
-                                    <input type="text" name="company" class="name" id="company"
-                                           value="{{ $feedBack->company }}">
-                                </li>
+{{--                                <li>--}}
+{{--                                    <label for="company">Company</label>--}}
+{{--                                    <input type="text" name="company" class="name" id="company"--}}
+{{--                                           value="{{ $feedBack->company }}">--}}
+{{--                                </li>--}}
                                 <li>
                                     <label for="phone">Phone</label>
                                     <input type="text" name="phone" class="name" id="phone"
@@ -119,11 +119,14 @@
                                 <input type="text" name="subject" class="name" id="subject"
                                        value="{{ $feedBack->subject }}" disabled>
                             </li>
-                            <li>
-                                <label for="message">Message</label>
-                                <textarea type="text" name="message" class="name" id="message"
-                                          disabled>{{ $feedBack->message }}</textarea>
-                            </li>
+{{--                            <li>--}}
+{{--                                <label for="message">Message</label>--}}
+{{--                                <textarea type="text" name="message" class="name" id="message"--}}
+{{--                                          disabled>{{ $feedBack->message }}</textarea>--}}
+{{--                            </li>--}}
+                            <div>
+                                {!! $feedBack->message !!}
+                            </div>
 
                             {{-- <li>
                                 <label for="additional_1">Preorder</label>
