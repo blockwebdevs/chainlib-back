@@ -45,6 +45,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('marketplace', 'API\ProductsController@getMarketplaceCategory');
     Route::get('product', 'API\ProductsController@getProduct');
 
+    Route::post('book', 'API\FeedBackController@submitBook');
+
     Route::get('products/new', 'API\ProductsController@getNewProducts');
     Route::get('products/outlet', 'API\ProductsController@getOutletProducts');
     Route::get('products/all', 'API\ProductsController@getAllProducts');
