@@ -8,6 +8,7 @@ use App\Http\Requests\OfferPostRequest;
 use App\Http\Resources\OfferResource;
 use App\Models\FeedBack;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class OfferController extends ApiController
 {
@@ -17,6 +18,41 @@ class OfferController extends ApiController
     public function __construct(ProductOffersFactory $productOffersFactory)
     {
         $this->productOffersFactory = $productOffersFactory;
+    }
+
+    public function submitBook(Request $request)
+    {
+        try {
+            $this->swithLang($request->get('lang'));
+            $this->swithCurrency($request->get('currency'));
+        } catch (\Exception $e) {
+            return response(['message' => 'Language or currency not found'], 500);;
+        }
+
+        if ($request->get('name') && $request->get('email')) {
+            $feedback = new FeedBack();
+            $feedback->first_name = $request->get('name');
+            $feedback->email = $request->get('email');
+            $feedback->phone = $request->get('phone');
+            $feedback->subject = 'Add A book';
+            $feedback->status = 'new';
+
+            $message = 'Title - '. $request->get('title');
+            $message .= 'Author - '. $request->get('author');
+            $message .= 'Second Author - '. $request->get('secondAuthor');
+            $message .= 'Subject - '. $request->get('subject');
+            $message .= 'Publication - '. $request->get('publication');
+            $message .= 'Illustrator - '. $request->get('illustrator');
+            $message .= 'Language - '. $request->get('language');
+            $message .= 'Country - '. $request->get('country');
+            $message .= 'ISBN - '. $request->get('isbn');
+            $message .= 'Description - '. $request->get('description');
+
+            $feedback->message = $message;
+            $feedback->save();
+
+            return $feedback;
+        }
     }
 
     public function createOffer(OfferPostRequest $request)
