@@ -60,9 +60,13 @@ class ProductsController extends ApiController
             return $this->respondError("Language is not found", 500);
         }
 
-        $category = $this->categoryFactory->createByAlias($request->get('alias'));
+        if ($request->get('alias')) {
+            $data = $this->categoryFactory->createByAlias($request->get('alias'));
+        }else {
+            $data = $this->productFactory->getAllProducts();
+        }
 
-        return $this->respond($category);
+        return $this->respond($data);
     }
 
     public function getCategory(Request $request)

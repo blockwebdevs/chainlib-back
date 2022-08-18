@@ -54,6 +54,33 @@ class ProductFactory
         ];
     }
 
+    public function getAllProducts()
+    {
+        $data = [];
+
+        $products = Product::with(
+            [
+                'translation',
+                'brand.translation',
+                'images',
+                'mainImage',
+                'setImage',
+                'mainPrice',
+                'personalPrice'
+            ])
+            ->where('active', 1)
+            ->get();
+
+        foreach ($products as $product) {
+            $data[] = [
+                'product' => $product,
+                'properties' => $this->productPropertiesFactory->createProductProperties($product->id, $product->category_id)
+            ];
+        }
+
+        return $data;
+    }
+
     public function getByCategoryId($categoryId)
     {
         $data = [];
