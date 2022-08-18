@@ -13,6 +13,11 @@ use Session;
 
 class PagesController extends Controller
 {
+    public function downloadImage($src)
+    {
+        return response()->download(public_path('images/products/og/' . $src));
+    }
+
     /***********************************  Render Methods ***********************
     *
     *  Render home page

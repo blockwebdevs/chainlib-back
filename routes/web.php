@@ -9,6 +9,8 @@ Route::get('/', function () {
 Route::get('/generate_pdf', 'PaymentController@generatePdf');
 Route::get('/sitemap.xml', 'SitemapController@index');
 
+Route::get('/download/image/{src}', 'PagesController@downloadImage');
+
 Route::get('/status/{orderId}', 'Payments\Methods\Paypal@getPaymentStatus')->name('status');
 Route::get('/cancel-status/{orderId}', 'Payments\Methods\Paypal@getPaymentCancelStatus')->name('cancel-status');
 Route::any('/paypal/callback', 'Payments\Methods\Paypal@callBack');
