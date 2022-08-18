@@ -14,9 +14,17 @@ class ProductValuePropertyFactory
 
         if ($value) {
             if ($value->value) {
-                return $value->value->translation->name;
+                if ($value->value->translation) {
+                    return $value->value->translation->name;
+                } else {
+                    return '---';
+                }
             } else {
-                return $value->translation->value;
+                if ($value->translation) {
+                    return $value->translation->value;
+                }else {
+                    return '---';
+                }
             }
         }
 
