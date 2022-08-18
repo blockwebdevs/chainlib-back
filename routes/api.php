@@ -18,6 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/en/download/image/{src}', 'PagesController@downloadImage');
+
+
 Route::get('/en/api/offers', 'API\OfferController@getOffers');
 Route::post('/en/api/offer', 'API\OfferController@createOffer');
 Route::post('/en/api/book', 'API\OfferController@submitBook');
