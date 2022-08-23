@@ -26,7 +26,7 @@
                     <div class="col-md-6">
                         @if($feedBack->status !== 'offer')
                             <h6>
-                                <small>forma - </small> {{ $feedBack->form }}
+                                <small>form - </small> {{ $feedBack->form }}
                                 @if ($feedBack->status === 'new')
                                     <span class="label label-primary">new</span>
                                 @elseif ($feedBack->status === 'procesed')
@@ -127,6 +127,7 @@
                             <div>
                                 {!! $feedBack->message !!}
                             </div>
+
 
                             {{-- <li>
                                 <label for="additional_1">Preorder</label>

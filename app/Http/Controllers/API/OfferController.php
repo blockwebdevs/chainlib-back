@@ -9,6 +9,7 @@ use App\Http\Resources\OfferResource;
 use App\Models\FeedBack;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class OfferController extends ApiController
 {
@@ -22,9 +23,13 @@ class OfferController extends ApiController
 
     public function submitBook(Request $request)
     {
+        // $form = $request->get('form');
+        //
+        // dd(($request->file));
+
         try {
-            $this->swithLang($request->get('lang'));
-            $this->swithCurrency($request->get('currency'));
+            $this->swithLang('ro');
+            $this->swithCurrency('5');
         } catch (\Exception $e) {
             return response(['message' => 'Language or currency not found'], 500);;
         }
@@ -49,9 +54,17 @@ class OfferController extends ApiController
             $message .= 'Description -  <b>' . $request->get('description') . '</b><br>';
 
             $feedback->message = $message;
+
+            if ($request->file) {
+                $picture = uniqid() . '-' . $request->file->getClientOriginalName();
+                $request->file->move('images/leads', $picture);
+                $feedback->image = $picture;
+            }
+
             $feedback->save();
 
-            return $feedback;
+            return response()->json(['data' => $feedback], 200);
+            // return $feedback;
         }
     }
 
