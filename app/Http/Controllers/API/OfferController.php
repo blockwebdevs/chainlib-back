@@ -23,10 +23,6 @@ class OfferController extends ApiController
 
     public function submitBook(Request $request)
     {
-        // $form = $request->get('form');
-        //
-        // dd(($request->file));
-
         try {
             $this->swithLang('ro');
             $this->swithCurrency('5');
@@ -42,7 +38,8 @@ class OfferController extends ApiController
             $feedback->subject = 'Add A book';
             $feedback->status = 'new';
 
-            $message = 'Title - <b>' . $request->get('title') . '</b><br>';
+            $message = 'Category - <b>' . $request->get('categorySelected') . '</b><br>';
+            $message .= 'Title - <b>' . $request->get('title') . '</b><br>';
             $message .= 'Author -  <b>' . $request->get('author') . '</b><br>';
             $message .= 'Second Author -  <b>' . $request->get('secondAuthor') . '</b><br>';
             $message .= 'Subject -  <b>' . $request->get('subject') . '</b><br>';
@@ -52,6 +49,7 @@ class OfferController extends ApiController
             $message .= 'Country -  <b>' . $request->get('country') . '</b><br>';
             $message .= 'ISBN -  <b>' . $request->get('isbn') . '</b><br>';
             $message .= 'Description -  <b>' . $request->get('description') . '</b><br>';
+            $message .= 'Near Account -  <b>' . $request->get('nearAcc') . '</b><br>';
 
             $feedback->message = $message;
 

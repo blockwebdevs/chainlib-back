@@ -51,6 +51,7 @@ class GoogleAnalyticsAdmin extends \Google\Service
   public $accounts;
   public $accounts_userLinks;
   public $properties;
+  public $properties_audiences;
   public $properties_conversionEvents;
   public $properties_customDimensions;
   public $properties_customMetrics;
@@ -418,6 +419,16 @@ class GoogleAnalyticsAdmin extends \Google\Service
                   'type' => 'string',
                 ],
               ],
+            ],'runAccessReport' => [
+              'path' => 'v1alpha/{+entity}:runAccessReport',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'entity' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
             ],'updateAttributionSettings' => [
               'path' => 'v1alpha/{+name}',
               'httpMethod' => 'PATCH',
@@ -447,6 +458,78 @@ class GoogleAnalyticsAdmin extends \Google\Service
                 ],
               ],
             ],'updateGoogleSignalsSettings' => [
+              'path' => 'v1alpha/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->properties_audiences = new GoogleAnalyticsAdmin\Resource\PropertiesAudiences(
+        $this,
+        $this->serviceName,
+        'audiences',
+        [
+          'methods' => [
+            'archive' => [
+              'path' => 'v1alpha/{+name}:archive',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'create' => [
+              'path' => 'v1alpha/{+parent}/audiences',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v1alpha/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v1alpha/{+parent}/audiences',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'patch' => [
               'path' => 'v1alpha/{+name}',
               'httpMethod' => 'PATCH',
               'parameters' => [

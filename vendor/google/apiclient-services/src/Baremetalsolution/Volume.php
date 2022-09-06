@@ -24,6 +24,10 @@ class Volume extends \Google\Model
    */
   public $autoGrownSizeGib;
   /**
+   * @var bool
+   */
+  public $bootVolume;
+  /**
    * @var string
    */
   public $currentSizeGib;
@@ -55,6 +59,10 @@ class Volume extends \Google\Model
    * @var string
    */
   public $pod;
+  /**
+   * @var string
+   */
+  public $protocol;
   /**
    * @var string
    */
@@ -99,6 +107,20 @@ class Volume extends \Google\Model
   public function getAutoGrownSizeGib()
   {
     return $this->autoGrownSizeGib;
+  }
+  /**
+   * @param bool
+   */
+  public function setBootVolume($bootVolume)
+  {
+    $this->bootVolume = $bootVolume;
+  }
+  /**
+   * @return bool
+   */
+  public function getBootVolume()
+  {
+    return $this->bootVolume;
   }
   /**
    * @param string
@@ -211,6 +233,20 @@ class Volume extends \Google\Model
   public function getPod()
   {
     return $this->pod;
+  }
+  /**
+   * @param string
+   */
+  public function setProtocol($protocol)
+  {
+    $this->protocol = $protocol;
+  }
+  /**
+   * @return string
+   */
+  public function getProtocol()
+  {
+    return $this->protocol;
   }
   /**
    * @param string

@@ -15,8 +15,6 @@
         "laravel/helpers": "^1.2",
         "laravel/passport": "^9.2",
         "laravel/tinker": "~1.0",
-        "moirei/laravel-google-merchant-api": "^1.0",
-        "paypal/rest-api-sdk-php": "^1.14",
         "phpunit/phpunit": "^9.5.10",
         "revolution/laravel-google-sheets": "^5.3",
         "s-ichikawa/laravel-sendgrid-driver": "^2.0",

@@ -158,7 +158,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Sichikawa\LaravelSendgridDriver\SendgridTransportServiceProvider::class,
-        MOIREI\GoogleMerchantApi\GoogleMerchantApiServiceProvider::class,
 
     ],
 
