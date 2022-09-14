@@ -1271,28 +1271,28 @@ class AutoUploadController extends Controller
         $mainPrice = ProductPrice::where('currency_id', $mainCurrency->id)->where('product_id', $product->id)->first();
 
 
-        // foreach ($prices as $key => $price) {
-        //     $prodPrice = ProductPrice::find($key);
-        //     if ($prodPrice->currency->exchange_dependable == 1) {
-        //         if ($mainPrice->id == $key) {
-        //             ProductPrice::where('id', $key)->update([
-        //                 'old_price' => $price,
-        //                 'price' => (int)$price - ((int)$price * $product->discount / 100),
-        //                 'b2b_price' => $pricesB2B[$key],
-        //                 'b2b_old_price' => $pricesB2B[$key],
-        //             ]);
-        //             $this->regeneratePricesStep2($product);
-        //         }
-        //     }else{
-        //         ProductPrice::where('id', $key)->update([
-        //                    'old_price' => $price,
-        //                    'price' => (int)$price - ((int)$price * $product->discount / 100),
-        //                    'b2b_price' => $pricesB2B[$key],
-        //                    'b2b_old_price' => $pricesB2B[$key],
-        //                ]);
-        //     }
-        //
-        // }
+         foreach ($prices as $key => $price) {
+             $prodPrice = ProductPrice::find($key);
+             if ($prodPrice->currency->exchange_dependable == 1) {
+                 if ($mainPrice->id == $key) {
+                     ProductPrice::where('id', $key)->update([
+                         'old_price' => $price,
+                         'price' => (int)$price - ((int)$price * $product->discount / 100),
+                         'b2b_price' => $pricesB2B[$key],
+                         'b2b_old_price' => $pricesB2B[$key],
+                     ]);
+                     $this->regeneratePricesStep2($product);
+                 }
+             }else{
+                 ProductPrice::where('id', $key)->update([
+                            'old_price' => $price,
+                            'price' => (int)$price - ((int)$price * $product->discount / 100),
+                            'b2b_price' => $pricesB2B[$key],
+                            'b2b_old_price' => $pricesB2B[$key],
+                        ]);
+             }
+
+         }
     }
 
     // Product Generate exchange Prices

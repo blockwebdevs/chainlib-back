@@ -29,15 +29,15 @@ class CheckoutController extends ApiController
     {
         $message = 'New order from ' . $request->get('userId');
 
-        $message .= 'User Info - <b>' . $request->get('userInfo') . '</b><br>';
-        $message .= 'Products - <b>' . $request->get('products') . '</b><br>';
-        $message .= 'Amount - <b>' . $request->get('amount') . '</b><br>';
+        $message .= 'User Info : <br>' . $request->get('userInfo') . '</br><br>';
+        $message .= 'Products : <br>' . $request->get('products') . '</br><br>';
+        $message .= 'Amount : <br>' . $request->get('amount') . '</br><br>';
 
         $offer = FeedBack::create([
             'form' => 'order',
             'status' => 'offer',
             'first_name' => $request->get('name'),
-            'subject' => 'Order pending',
+            'subject' => 'New order',
             'message' => $message,
         ]);
 

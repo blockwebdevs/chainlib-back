@@ -95,19 +95,19 @@
                                                value="{{ $feedBack->product->mainPrice->price }}" disabled>
                                     </li>
                                 @endif
-                                <li>
-                                    <label for="email">Offer Price (Near)</label>
-                                    <input type="text" name="email" class="name" id="email"
-                                           value="{{ $feedBack->additional_2 }}" disabled>
-                                </li>
+{{--                                <li>--}}
+{{--                                    <label for="email">Offer Price (Near)</label>--}}
+{{--                                    <input type="text" name="email" class="name" id="email"--}}
+{{--                                           value="{{ $feedBack->additional_2 }}" disabled>--}}
+{{--                                </li>--}}
                                 <li>
                                     <label for="email">Date</label>
                                     <input type="text" name="email" class="name" id="email"
                                            value="{{ $feedBack->created_at }}" disabled>
                                 </li>
                                 <li><br>
-                                    <a href="{{ url('back/feedback/change-product-price/'.$feedBack->id) }}"
-                                       class="btn btn-primary btn-sm btn-block rounded-s">Change Price</a>
+{{--                                    <a href="{{ url('back/feedback/change-product-price/'.$feedBack->id) }}"--}}
+{{--                                       class="btn btn-primary btn-sm btn-block rounded-s">Change Price</a>--}}
                                 </li>
                             @endif
                         </ul>

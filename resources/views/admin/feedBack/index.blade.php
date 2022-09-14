@@ -21,7 +21,7 @@
                 <div class="tab-area">
                     <ul class="nav nav-tabs nav-tabs-bordered">
                         <li class="nav-item">
-                            <a href="#offer" class="nav-link open active" data-target="#offer">Offers</a>
+                            <a href="#offer" class="nav-link open active" data-target="#offer">Orders</a>
                         </li>
                         <li class="nav-item">
                             <a href="#new" class="nav-link" data-target="#new">New</a>
@@ -39,11 +39,11 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>AccountID</th>
-                            <th>Actual Price</th>
-                            <th>Offer Price</th>
-                            <th>Accepted</th>
-                            <th>Product</th>
+                            {{--                            <th>AccountID</th>--}}
+                            {{--                            <th>Actual Price</th>--}}
+                            {{--                            <th>Offer Price</th>--}}
+                            <th>Order</th>
+                            <th>Date</th>
                             <th class="text-center">Status</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -55,31 +55,35 @@
                                 <td>
                                     {{ $key + 1 }}
                                 </td>
+                                {{--                                <td>--}}
+                                {{--                                    {{ $feedBack->first_name }}--}}
+                                {{--                                </td>--}}
+                                {{--                                <td>--}}
+                                {{--                                    @if($feedBack->product)--}}
+                                {{--                                        {{ $feedBack->product->mainPrice->price }} Near--}}
+                                {{--                                    @endif--}}
+                                {{--                                </td>--}}
                                 <td>
-                                    {{ $feedBack->first_name }}
+                                    ORDER # {{ $feedBack->id }}
                                 </td>
                                 <td>
-                                    @if($feedBack->product)
-                                        {{ $feedBack->product->mainPrice->price }} Near
-                                    @endif
+                                    {{ $feedBack->created_at }}
                                 </td>
-                                <td>
-                                    {{ $feedBack->additional_2 }} Near
-                                </td>
-                                <td>
-                                    @if($feedBack->additional_3)
-                                        <span class="label label-success">acccepted</span>
-                                    @else
-                                        <span class="label label-warning">---------------</span>
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($feedBack->product)
-                                        <small>{{ $feedBack->product->translation->name }}</small>
-                                    @endif
-                                </td>
+                                {{--                                <td></td>--}}
+                                {{--                                <td>--}}
+                                {{--                                    @if($feedBack->additional_3)--}}
+                                {{--                                        <span class="label label-success">acccepted</span>--}}
+                                {{--                                    @else--}}
+                                {{--                                        <span class="label label-warning">---------------</span>--}}
+                                {{--                                    @endif--}}
+                                {{--                                </td>--}}
+                                {{--                                <td>--}}
+                                {{--                                    @if($feedBack->product)--}}
+                                {{--                                        <small>{{ $feedBack->product->translation->name }}</small>--}}
+                                {{--                                    @endif--}}
+                                {{--                                </td>--}}
                                 <td class="text-center">
-                                    <span class="label label-primary">Offers</span>
+                                    <span class="label label-primary">Order</span>
                                 </td>
                                 <td>
                                     <a href="{{ route('feedback.edit', $feedBack->id) }}">

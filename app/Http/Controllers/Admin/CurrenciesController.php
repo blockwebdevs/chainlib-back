@@ -287,9 +287,9 @@ class CurrenciesController extends Controller
             }
         }
 
-        $dillerGroupController = new \Admin\Http\Controllers\DillerGroupsController();
+//        $dillerGroupController = new \Admin\Http\Controllers\DillerGroupsController();
 
-        $dillerGroupController->generateDillersPrices();
+//        $dillerGroupController->generateDillersPrices();
     }
 
     public function countByRateProductsPrice($product, $mainCurrency, $currency)
