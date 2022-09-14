@@ -21,6 +21,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/en/download/image/{src}', 'PagesController@downloadImage');
 
 
+Route::post('/en/api/details/order', 'API\CheckoutController@setOrderDetails');
+Route::post('/en/api/pay/order', 'API\CheckoutController@pay');
+
 Route::get('/en/api/offers', 'API\OfferController@getOffers');
 Route::post('/en/api/offer', 'API\OfferController@createOffer');
 Route::post('/en/api/book', 'API\OfferController@submitBook');
