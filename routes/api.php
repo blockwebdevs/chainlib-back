@@ -24,6 +24,7 @@ Route::get('/en/download/image/{src}', 'PagesController@downloadImage');
 Route::post('/en/api/details/order', 'API\CheckoutController@setOrderDetails');
 Route::post('/en/api/pay/order', 'API\CheckoutController@pay');
 
+Route::get('/en/api/search', 'API\ProductsController@searchProducts');
 Route::get('/en/api/offers', 'API\OfferController@getOffers');
 Route::post('/en/api/offer', 'API\OfferController@createOffer');
 Route::post('/en/api/book', 'API\OfferController@submitBook');
@@ -33,7 +34,6 @@ Route::patch('/api/cart', 'API\CheckoutController@changeQtyCart')->middleware('c
 Route::delete('/api/cart', 'API\CheckoutController@deleteCart')->middleware('cors');
 Route::delete('/api/carts', 'API\CheckoutController@deleteAllCarts')->middleware('cors');
 Route::post('/api/cart', 'API\CheckoutController@setCart');
-
 
 Route::post('/en/api/cart', 'API\CheckoutController@setCart');
 Route::patch('/en/api/cart', 'API\CheckoutController@changeQtyCart');
@@ -61,7 +61,6 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('products/filter', 'API\ProductsController@getFiltredProducts');
     Route::get('products/default-filter', 'API\ProductsController@getDefaultFilter');
 
-
     Route::get('collections', 'API\ProductsController@getCollections');
     Route::get('collection', 'API\ProductsController@getCollection');
 
@@ -75,7 +74,6 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('designer', 'API\ProductsController@getDesigner');
 });
 
-
 Route::group(['prefix' => 'api/v2', 'middleware' => 'cors'], function () {
     Route::get('categories', 'Api\ProductsController@getCategories');
 
@@ -86,5 +84,4 @@ Route::group(['prefix' => 'api/v2', 'middleware' => 'cors'], function () {
     Route::get('promotions', 'Api\PromotionController@get');
 
     Route::get('leads', 'Api\ServiceController@addLeads');  // to remake POST
-
 });

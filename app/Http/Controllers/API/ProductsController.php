@@ -8,6 +8,7 @@ use App\Factories\ProductProperties\ProductPropertiesFactory;
 use App\Factories\SimilarFactory;
 use App\Models\ProductCategory;
 use App\Models\Collection;
+use App\Models\ProductTranslation;
 use App\Models\Promotion;
 use App\Models\Product;
 use App\Models\ProductPrice;
@@ -49,6 +50,27 @@ class ProductsController extends ApiController
             ->get();
 
         return $this->respond($categories);
+    }
+
+    public function searchProducts(Request $request) {
+        try {
+            $this->swithLang($request->get('lang'));
+            $this->swithCurrency($request->get('currency'));
+        } catch (\Exception $e) {
+            return $this->respondError("Language is not found", 500);
+        }
+
+        if ($request->get('search')) {
+            $productsFindIds = ProductTranslation::where('name', 'like', '%'.$request->get('search').'%')
+                ->orWhere('body', 'like', '%'.$request->get('search').'%')
+                ->pluck('product_id')->toArray();
+
+            $products = Product::with(['translation', 'mainImage'])->whereIn('id', $productsFindIds)->get();
+
+            return $this->respond($products);
+        }
+
+        return $this->respondError("Search is not found", 500);
     }
 
     public function getMarketplaceCategory(Request $request)
