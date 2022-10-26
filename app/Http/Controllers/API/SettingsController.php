@@ -16,7 +16,7 @@ class SettingsController extends ApiController
     public function getSettings()
     {
         $data['langs'] = Lang::where('active', 1)->get();
-        $data['countries'] = Country::where('active', 1)->orderBy('main', 'desc')->get();
+        $data['countries'] = Country::where('active', 1)->orderBy('main', 'desc')->limit(10)->get();
         $data['currencies'] = Currency::where('active', 1)->orderBy('type', 'desc')->get();
 
         return $this->respond($data);

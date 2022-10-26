@@ -36,16 +36,16 @@ class Setup
     public function __construct($request)
     {
         $this->request = $request;
-        self::$site = $this->checkSiteType($this->request);
-        self::$device = $this->checkDevice();
-        self::$userId = $this->setUserId();
-        self::$seoData = $this->setSeoData();
-        self::$countries = Country::where('active', 1)->get();
+//        self::$site = $this->checkSiteType($this->request);
+//        self::$device = $this->checkDevice();
+//        self::$userId = $this->setUserId();
+//        self::$seoData = $this->setSeoData();
+//        self::$countries = Country::where('active', 1)->get();
         self::$mainCurrency = Currency::where('type', 1)->first();
-        self::$currencies = Currency::where('active', 1)->get();
+//        self::$currencies = Currency::where('active', 1)->get();
 
         if (!@$_COOKIE['country_id'] && $request->method() == 'GET') {
-            $this->checkUserData();
+//            $this->checkUserData();
         } else {
             $this->setGeoData();
         }
@@ -62,31 +62,31 @@ class Setup
         Model::$lang = self::$lang->id;
 
         if ($this->request->method() == 'GET') {
-            $this->reinitForce();
+//            $this->reinitForce();
 
-            View::share("site", self::$site);
-            View::share("device", self::$device);
+//            View::share("site", self::$site);
+//            View::share("device", self::$device);
 
-            View::share("country", self::$country);
-            View::share("countries", self::$countries);
+//            View::share("country", self::$country);
+//            View::share("countries", self::$countries);
+//
+//            View::share("mainCurrency", self::$mainCurrency);
+//            View::share("currency", self::$currency);
+//            View::share("currencies", self::$currencies);
+//            View::share("warehouse", self::$warehouse);
+//
+//            View::share("seoData", self::$seoData);
+//            View::share('unloggedUser', self::$unloggedUser);
 
-            View::share("mainCurrency", self::$mainCurrency);
-            View::share("currency", self::$currency);
-            View::share("currencies", self::$currencies);
-            View::share("warehouse", self::$warehouse);
-
-            View::share("seoData", self::$seoData);
-            View::share('unloggedUser', self::$unloggedUser);
-
-            View::share('productList', json_encode([]));
-            View::share('list', json_encode([]));
+//            View::share('productList', json_encode([]));
+//            View::share('list', json_encode([]));
 
             Model::$site = self::$site;
             Model::$currency = self::$currency->id;
             Model::$mainCurrency = self::$mainCurrency->id;
 
             if ($this->request->method() == 'GET') {
-                $this->shareCarts();
+//                $this->shareCarts();
                 $this->shareMenus();
             }
         }
@@ -182,10 +182,10 @@ class Setup
 
     private function setGeoData()
     {
-        self::$country = Country::where('id', @$_COOKIE['country_id'])->where('active', 1)->first();
+//        self::$country = Country::where('id', @$_COOKIE['country_id'])->where('active', 1)->first();
         self::$lang = Lang::where('lang', @$_COOKIE['lang_id'])->first();
         self::$currency = Currency::where('id', @$_COOKIE['currency_id'])->first();
-        self::$warehouse = Warehouse::where('id', @$_COOKIE['warehouse_id'])->first();
+//        self::$warehouse = Warehouse::where('id', @$_COOKIE['warehouse_id'])->first();
     }
 
     private function checkUserData()
