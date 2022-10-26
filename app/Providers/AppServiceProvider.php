@@ -28,8 +28,8 @@ class AppServiceProvider extends ServiceProvider
 {
     public function boot(Request $request)
     {
-        $setup = new Setup($request);
-        $setup->init();
+//        $setup = new Setup($request);
+//        $setup->init();
     }
 
     /**
